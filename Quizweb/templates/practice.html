@@ -43,7 +43,7 @@ href="{{ url_for('static', filename='style.css') }}">
 
                 {% for option in q.options %}
                 <div class="practice-answer"
-                     onclick="checkAnswer(this, '{{ option[0] }}', '{{ answer_key[q.id|string] }}')">
+                     onclick="checkAnswer(this, '{{ option[0] }}', '{{ q.correct }}')">
                     {{ option[0] }}. {{ option[1] }}
                 </div>
                 {% endfor %}
@@ -60,22 +60,34 @@ href="{{ url_for('static', filename='style.css') }}">
 function checkAnswer(element, selected, correct){
 
     let options = element.parentElement.children;
+    let correctAnswers = correct.split(",");
 
-    for(let option of options){
-        option.style.pointerEvents = "none";
-    }
-
-    if(selected === correct){
-        element.classList.add("correct");
+    if(correctAnswers.includes(selected)){
+        element.classList.toggle("correct");
     }
     else{
         element.classList.add("wrong");
+    }
+
+    let selectedCorrect = 0;
+
+    for(let option of options){
+        if(option.classList.contains("correct")){
+            selectedCorrect++;
+        }
+    }
+
+    if(selectedCorrect === correctAnswers.length){
 
         for(let option of options){
+            option.style.pointerEvents = "none";
+
             let text = option.innerText.trim();
 
-            if(text.startsWith(correct + ".")){
-                option.classList.add("correct");
+            for(let answer of correctAnswers){
+                if(text.startsWith(answer + ".")){
+                    option.classList.add("correct");
+                }
             }
         }
     }
