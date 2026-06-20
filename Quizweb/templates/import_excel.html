@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Import Excel</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="admin-page">
+
+<div class="form-card">
+
+    <h1 class="form-title">
+        Import câu hỏi từ Excel
+    </h1>
+
+    <p style="font-size:20px; margin-bottom:20px;">
+        File Excel cần các cột:
+        question, option_a, option_b,
+        option_c, option_d, correct_answer
+    </p>
+
+    <form method="POST"
+          enctype="multipart/form-data">
+
+        <div class="form-group">
+            <input type="file"
+                   name="excel_file"
+                   class="form-control"
+                   required>
+        </div>
+
+        <div class="form-buttons">
+            <button class="admin-btn save-btn">
+                Upload
+            </button>
+
+            <a href="/admin">
+                <button type="button"
+                        class="admin-btn cancel-btn">
+                    Hủy
+                </button>
+            </a>
+        </div>
+
+    </form>
+
+</div>
+</body>
+</html>

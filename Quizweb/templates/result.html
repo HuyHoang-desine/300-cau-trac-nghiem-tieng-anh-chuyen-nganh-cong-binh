@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Kết quả</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="result-box">
+
+    <h1>KẾT QUẢ BÀI THI</h1>
+
+    <div class="result-row">
+        Họ tên: {{ name }}
+    </div>
+
+    <div class="result-row">
+        Điểm: {{ score }}/{{ total }}
+    </div>
+
+    <div class="result-buttons">
+
+        <a href="/" class="menu-btn">
+            Trang chủ
+        </a>
+
+        <a href="/leaderboard" class="menu-btn">
+            Bảng điểm
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

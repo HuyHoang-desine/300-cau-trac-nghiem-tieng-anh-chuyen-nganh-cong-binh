@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Làm bài thi</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="quiz-page">
+
+<form id="quizForm" action="/submit" method="POST">
+
+<input type="hidden" name="name" value="{{ name }}">
+<input type="hidden" name="unit" value="{{ unit }}">
+
+<div class="quiz-header">
+    <div class="top-btn">Luật THADS</div>
+    <div class="top-btn">{{ name }}</div>
+
+    <button type="button"
+            class="top-btn submit-btn"
+            onclick="submitExam()">
+        Nộp bài
+    </button>
+</div>
+
+<div class="quiz-container">
+
+    <div class="sidebar">
+
+        <div class="timer-box">
+            <h2>THỜI GIAN</h2>
+            <div id="timer">30:00</div>
+        </div>
+
+        <div class="question-list">
+            <h2>Danh Sách</h2>
+
+            <div class="grid">
+                {% for q in questions %}
+                <button
+                    type="button"
+                    class="q-btn"
+                    id="btn{{ loop.index0 }}"
+                    onclick="showQuestion({{ loop.index0 }})">
+                    {{ loop.index }}
+                </button>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+    <div class="question-area">
+
+        {% for q in questions %}
+        {% set q_index = loop.index0 %}
+
+        <div class="question-block" id="question{{ q_index }}">
+
+            <div class="question-title">
+                Câu {{ loop.index }}
+            </div>
+
+            <h3>{{ q.question }}</h3>
+
+            {% for option in q.options %}
+            <label class="answer">
+                <input type="checkbox"
+                    name="question_{{ q.id }}"
+                    value="{{ option[0] }}"
+                    onclick="answerSelected({{ q_index }})">
+                {{ option[0] }}. {{ option[1] }}
+            </label>
+            {% endfor %}
+
+            <div class="nav-buttons">
+                <button type="button" onclick="prevQuestion()">
+                    ← Câu trước
+                </button>
+
+                <button type="button" onclick="nextQuestion()">
+                    Câu sau →
+                </button>
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+</form>
+
+<script>
+let currentQuestion = 0;
+let questionBlocks = document.querySelectorAll('.question-block');
+
+function showQuestion(index){
+    questionBlocks.forEach(q => q.classList.remove('active'));
+    questionBlocks[index].classList.add('active');
+    currentQuestion = index;
+}
+
+function nextQuestion(){
+    if(currentQuestion < questionBlocks.length - 1){
+        showQuestion(currentQuestion + 1);
+    }
+}
+
+function prevQuestion(){
+    if(currentQuestion > 0){
+        showQuestion(currentQuestion - 1);
+    }
+}
+
+function answerSelected(index){
+    document.getElementById("btn" + index).classList.add("answered");
+}
+
+function submitExam(){
+    if(confirm("Bạn có chắc muốn nộp bài?")){
+        document.getElementById("quizForm").submit();
+    }
+}
+
+let seconds = 1800;
+
+function updateTimer(){
+    let m = Math.floor(seconds / 60);
+    let s = seconds % 60;
+
+    document.getElementById("timer").innerHTML =
+        String(m).padStart(2,"0") + ":" +
+        String(s).padStart(2,"0");
+
+    if(seconds <= 0){
+        document.getElementById("quizForm").submit();
+    }
+
+    seconds--;
+}
+
+setInterval(updateTimer, 1000);
+showQuestion(0);
+</script>
+
+</body>
+</html>

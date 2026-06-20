@@ -1,0 +1,537 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html, body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background:
+        linear-gradient(
+            rgba(255,255,255,0.65),
+            rgba(255,255,255,0.65)
+        ),
+        url("/static/bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* ===== RESET INPUT ===== */
+
+input,
+button{
+    font-family: Arial, sans-serif;
+}
+
+input[type="number"]{
+    appearance:none;
+    -webkit-appearance:none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button{
+    -webkit-appearance:none;
+    margin:0;
+}
+
+/* ================= HOME ================= */
+
+.header{
+    position:relative;
+    background:rgba(60,160,220,0.55);
+    text-align:center;
+    padding:25px;
+    color:white;
+}
+
+.logo{
+    position:absolute;
+    left:20px;
+    top:15px;
+    width:150px;
+}
+
+.header h1{
+    font-size:58px;
+}
+
+.header h2{
+    font-size:45px;
+}
+
+.header h3{
+    font-size:40px;
+}
+
+.home-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    padding:40px 60px;
+    gap:40px;
+}
+
+.left-box{
+    width:52%;
+}
+
+.right-box{
+    width:40%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* ===== INPUT NAME ===== */
+
+.input-box{
+    width:100%;
+    height:72px;
+
+    padding-left:24px;
+    padding-right:24px;
+
+    border:none;
+    border-radius:20px;
+
+    background:rgba(80,170,220,0.45);
+    color:white;
+
+    font-size:30px;
+    outline:none;
+}
+
+.input-box::placeholder{
+    color:white;
+    opacity:1;
+}
+
+/* ===== UNIT ===== */
+
+.unit-wrapper{
+    width:100%;
+    padding:25px;
+    margin-top:20px;
+    background:rgba(80,170,220,0.45);
+    border-radius:20px;
+}
+
+.unit-box{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    color:white;
+    font-size:42px;
+}
+
+.unit-input{
+    width:90px;
+    height:70px;
+
+    border:none;
+    border-radius:15px;
+
+    text-align:center;
+    font-size:30px;
+    font-weight:bold;
+    outline:none;
+}
+
+/* ===== BUTTON ===== */
+
+.menu-btn{
+    width:400px;
+    height:120px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:60px;
+    border:3px solid #002b45;
+    background:#0d658f;
+
+    color:white;
+    font-size:34px;
+    text-decoration:none;
+
+    cursor:pointer;
+    margin-top:30px;
+}
+
+.menu-btn:hover{
+    transform:scale(1.03);
+}
+
+.practice-link{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+}
+
+/* ===== FOOTER ===== */
+
+.footer-info{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:55px;
+
+    background:rgba(60,160,220,0.45);
+    color:white;
+    font-size:26px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 30px;
+}
+
+/* ================= QUIZ ================= */
+
+.quiz-page{
+    height:100vh;
+    overflow:hidden;
+}
+
+.quiz-header{
+    height:110px;
+    margin:15px;
+    border-radius:20px;
+    background:#189ad3;
+
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+}
+
+.top-btn{
+    width:280px;
+    padding:18px;
+    text-align:center;
+
+    font-size:28px;
+    color:white;
+
+    border:3px solid white;
+    border-radius:15px;
+
+    background:transparent;
+}
+
+.submit-btn{
+    cursor:pointer;
+}
+
+.quiz-container{
+    height:calc(100vh - 140px);
+    display:flex;
+    gap:25px;
+    padding:0 20px 20px 20px;
+}
+
+.sidebar{
+    width:320px;
+}
+
+.timer-box{
+    background:rgba(100,180,220,0.5);
+    border-radius:30px;
+    padding:25px;
+    text-align:center;
+}
+
+.timer-box h2{
+    font-size:28px;
+}
+
+#timer{
+    font-size:60px;
+    color:white;
+}
+
+.question-list{
+    margin-top:20px;
+    background:rgba(100,180,220,0.5);
+    border-radius:30px;
+    padding:20px;
+}
+
+.question-list h2{
+    margin-bottom:20px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.q-btn{
+    height:55px;
+    border:none;
+    border-radius:10px;
+    background:#0d658f;
+    color:white;
+    cursor:pointer;
+    font-size:20px;
+}
+
+.q-btn:hover{
+    transform:scale(1.05);
+}
+
+.q-btn.answered{
+    background:#00c853 !important;
+}
+
+.question-area{
+    flex:1;
+    background:rgba(80,180,230,0.35);
+    border-radius:30px;
+    padding:30px;
+}
+
+.question-block{
+    display:none;
+}
+
+.question-block.active{
+    display:block;
+}
+
+.question-title{
+    background:#189ad3;
+    color:white;
+    text-align:center;
+    padding:20px;
+    font-size:40px;
+    border-radius:15px;
+    margin-bottom:30px;
+}
+
+.question-block h3{
+    font-size:clamp(18px, 2vw, 30px);
+    line-height:1.5;
+    word-break:break-word;
+    color:#003c5f;
+}
+
+.answer{
+    display:block;
+    background:white;
+    padding:20px;
+    margin-bottom:18px;
+    border-radius:15px;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.answer:hover{
+    background:#dff3ff;
+}
+
+.nav-buttons{
+    margin-top:30px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.nav-buttons button{
+    padding:14px 28px;
+    font-size:24px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    background:#189ad3;
+    color:white;
+}
+
+/* ================= RESULT ================= */
+
+.result-box,
+.leaderboard-box{
+    width:80%;
+    margin:40px auto;
+    padding:40px;
+    border-radius:30px;
+    background:rgba(80,180,230,0.45);
+}
+
+.result-box h1,
+.leaderboard-box h1{
+    color:white;
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.result-row{
+    background:white;
+    padding:20px;
+    margin-bottom:20px;
+    border-radius:15px;
+    font-size:28px;
+}
+
+.result-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+th, td{
+    border:1px solid #ccc;
+    padding:15px;
+    text-align:center;
+}
+
+th{
+    background:#189ad3;
+    color:white;
+}
+
+/* ================= ADMIN ================= */
+
+.admin-page{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.form-card{
+    width:900px;
+    max-width:90%;
+    background:rgba(255,255,255,0.88);
+    border-radius:25px;
+    padding:40px;
+    box-shadow:0 0 20px rgba(0,0,0,0.25);
+}
+
+.form-title{
+    text-align:center;
+    font-size:42px;
+    color:#0d658f;
+    margin-bottom:30px;
+}
+
+.form-group{
+    margin-bottom:20px;
+}
+
+.form-group label{
+    display:block;
+    font-size:22px;
+    margin-bottom:10px;
+    color:#003c5f;
+}
+
+.form-control{
+    width:100%;
+    padding:16px;
+    border-radius:12px;
+    border:1px solid #ccc;
+    font-size:20px;
+}
+
+/* ================= PRACTICE ================= */
+
+.practice-answer{
+    background:white;
+    padding:18px;
+    margin-bottom:10px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:28px;
+}
+
+.practice-answer:hover{
+    background:#dff3ff;
+}
+
+.practice-answer{
+    background:white;
+    padding:18px;
+    margin-bottom:10px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:28px;
+    transition:0.3s;
+}
+
+.practice-answer:hover{
+    background:#dff3ff;
+}
+
+.practice-answer.correct{
+    background:#00c853 !important;
+    color:white;
+}
+
+.practice-answer.wrong{
+    background:#ff5252 !important;
+    color:white;
+}
+
+/* KHUNG CHÍNH */
+.quiz-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* SIDEBAR DANH SÁCH (chính là phần bạn muốn scroll) */
+.sidebar {
+    width: 220px;
+    max-height: 100vh;
+    overflow-y: auto;
+    background: rgba(255,255,255,0.4);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* QUESTION AREA */
+.question-area {
+    flex: 1;
+    min-width: 0; /* QUAN TRỌNG: chống tràn flex */
+    max-height: 100vh;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* CHỐNG TRÀN NỘI DUNG CÂU HỎI */
+.question-block {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* ĐÁP ÁN KHÔNG TRÀN */
+.answer {
+    display: block;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.question-area {
+    height: calc(100vh - 180px); /* trừ header */
+    overflow-y: auto;            /* bật cuộn dọc */
+    padding: 10px;
+}

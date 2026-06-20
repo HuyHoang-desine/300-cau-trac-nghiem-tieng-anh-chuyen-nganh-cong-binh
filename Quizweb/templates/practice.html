@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Luyện tập</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="quiz-page">
+
+<div class="quiz-header">
+    <div class="top-btn">CHẾ ĐỘ LUYỆN TẬP</div>
+
+    <a href="/" class="top-btn" style="text-decoration:none;">
+        Trang chủ
+    </a>
+</div>
+
+<div class="quiz-container">
+
+    <div class="sidebar">
+        <div class="timer-box">
+            <h2>Số câu</h2>
+            <div id="timer">{{ questions|length }}</div>
+        </div>
+    </div>
+
+    <div class="question-area" style="overflow-y:auto;">
+
+        {% for q in questions %}
+        <div class="question-block active"
+             style="display:block; margin-bottom:40px;">
+
+            <div class="question-title">
+                Câu {{ loop.index }}
+            </div>
+
+            <h3>{{ q.question }}</h3>
+
+            <div class="practice-options">
+
+                {% for option in q.options %}
+                <div class="practice-answer"
+                     onclick="checkAnswer(this, '{{ option[0] }}', '{{ answer_key[q.id|string] }}')">
+                    {{ option[0] }}. {{ option[1] }}
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+<script>
+function checkAnswer(element, selected, correct){
+
+    let options = element.parentElement.children;
+
+    for(let option of options){
+        option.style.pointerEvents = "none";
+    }
+
+    if(selected === correct){
+        element.classList.add("correct");
+    }
+    else{
+        element.classList.add("wrong");
+
+        for(let option of options){
+            let text = option.innerText.trim();
+
+            if(text.startsWith(correct + ".")){
+                option.classList.add("correct");
+            }
+        }
+    }
+}
+</script>
+
+</body>
+</html>

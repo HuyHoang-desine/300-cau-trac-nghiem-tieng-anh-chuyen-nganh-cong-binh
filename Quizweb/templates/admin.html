@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<style>
+body{
+    background:#f3f8fb;
+}
+
+.admin-container{
+    width:95%;
+    margin:auto;
+    padding:20px;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.55);
+    z-index:999;
+}
+
+.modal.show{
+    display:block;
+}
+
+.modal-content{
+    background:white;
+    width:850px;
+    max-width:95%;
+    margin:50px auto;
+    padding:35px;
+    border-radius:25px;
+}
+
+.close-btn{
+    float:right;
+    font-size:35px;
+    cursor:pointer;
+}
+
+.modal input,
+.modal textarea{
+    width:100%;
+    margin-bottom:15px;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ccc;
+}
+
+.action-link{
+    text-decoration:none;
+    margin-right:8px;
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid px-4">
+        <span class="navbar-brand">
+            ⚙️ ADMIN DASHBOARD
+        </span>
+
+        <a href="/logout" class="btn btn-outline-light">
+            Đăng xuất
+        </a>
+    </div>
+</nav>
+
+<div class="admin-container">
+
+    <div class="mb-4">
+        <button class="btn btn-primary"
+                onclick="openAddModal()">
+            ➕ Thêm câu hỏi
+        </button>
+
+        <button class="btn btn-success"
+                onclick="openImportModal()">
+            📥 Import Excel
+        </button>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header">
+            <h3>Danh sách câu hỏi</h3>
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-striped table-hover table-bordered">
+
+                <tr>
+                    <th>ID</th>
+                    <th>Câu hỏi</th>
+                    <th>Đáp án đúng</th>
+                    <th>Thao tác</th>
+                </tr>
+
+                {% for q in questions %}
+                <tr>
+                    <td>{{ q.id }}</td>
+                    <td>{{ q.question }}</td>
+                    <td>{{ q.correct_answer }}</td>
+                    <td>
+                        <a class="action-link"
+                           href="/edit_question/{{ q.id }}">
+                            ✏️ Sửa
+                        </a>
+
+                        <a class="action-link text-danger"
+                           href="/delete_question/{{ q.id }}"
+                           onclick="return confirm('Xóa câu hỏi này?')">
+                            🗑 Xóa
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </table>
+
+        </div>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-header">
+            <h3>Kết quả làm bài</h3>
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-bordered table-hover">
+                <a href="/clear_results"
+                class="btn btn-danger mb-3"
+                onclick="return confirm('XÓA TOÀN BỘ LỊCH SỬ?')">
+                🗑 Xóa toàn bộ lịch sử
+                </a>
+                <tr>
+                    <th>Họ tên</th>
+                    <th>Đơn vị</th>
+                    <th>Điểm</th>
+                    <th>Tổng câu</th>
+                    <th>Thời gian</th>
+                    <th>Thao tác</th>
+                </tr>
+
+                {% for r in results %}
+                <tr>
+                    <td>{{ r.name }}</td>
+                    <td>{{ r.score }}</td>
+                    <td>{{ r.total }}</td>
+                    <td>{{ r.submit_time }}</td>
+
+                    <td>
+                        <a href="/delete_result/{{ r.id }}"
+                            class="btn btn-danger btn-sm"
+                            onclick="return confirm('Xóa kết quả này?')">
+                            Xóa
+                        </a>
+                     </td>
+                </tr>
+                {% endfor %}
+
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- ADD MODAL -->
+<div id="addModal" class="modal">
+<div class="modal-content">
+
+<span class="close-btn"
+      onclick="closeAddModal()">
+×
+</span>
+
+<h2>Thêm câu hỏi</h2>
+
+<form action="/add_question" method="POST">
+
+<textarea name="question"
+          rows="4"
+          placeholder="Nhập câu hỏi..."
+          required></textarea>
+
+<input name="option_a" placeholder="Đáp án A" required>
+<input name="option_b" placeholder="Đáp án B" required>
+<input name="option_c" placeholder="Đáp án C" required>
+<input name="option_d" placeholder="Đáp án D" required>
+
+<input name="correct_answer"
+       placeholder="Đáp án đúng (A/B/C/D)"
+       required>
+
+<button class="btn btn-primary">
+    Lưu câu hỏi
+</button>
+
+</form>
+
+</div>
+</div>
+
+<!-- IMPORT MODAL -->
+<div id="importModal" class="modal">
+<div class="modal-content">
+
+<span class="close-btn"
+      onclick="closeImportModal()">
+×
+</span>
+
+<h2>Import Excel</h2>
+
+<form action="/import_excel"
+      method="POST"
+      enctype="multipart/form-data">
+
+<p>Excel cần cột:</p>
+<ul>
+    <li>question</li>
+    <li>option_a</li>
+    <li>option_b</li>
+    <li>option_c</li>
+    <li>option_d</li>
+    <li>correct_answer</li>
+</ul>
+
+<input type="file"
+       name="excel_file"
+       required>
+
+<br><br>
+
+<button class="btn btn-success">
+    Upload
+</button>
+
+</form>
+
+</div>
+</div>
+
+<script>
+function openAddModal(){
+    document.getElementById("addModal")
+    .classList.add("show");
+}
+
+function closeAddModal(){
+    document.getElementById("addModal")
+    .classList.remove("show");
+}
+
+function openImportModal(){
+    document.getElementById("importModal")
+    .classList.add("show");
+}
+
+function closeImportModal(){
+    document.getElementById("importModal")
+    .classList.remove("show");
+}
+</script>
+
+</body>
+</html>

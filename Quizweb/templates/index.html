@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Trắc nghiệm Tiếng Anh</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="header">
+
+    <img src="/static/logo.png" class="logo">
+
+    <h1>ĐẠI ĐỘI 4 - TIỂU ĐOÀN 2</h1>
+    <h2>TRƯỜNG SĨ QUAN CÔNG BINH</h2>
+    <h3>TRẮC NGHIỆM: THI HÀNH ÁN DÂN SỰ</h3>
+
+</div>
+
+<div class="home-container">
+
+    <!-- LEFT -->
+    <div class="left-box">
+
+        <form action="/start_exam" method="POST">
+
+            <input
+                class="input-box"
+                name="name"
+                placeholder="Họ và tên"
+                required>
+
+            <div class="unit-wrapper">
+                <div class="unit-box">
+
+                    <span>B</span>
+                    <input
+                        type="number"
+                        min="0"
+                        name="unit_b"
+                        required
+                        class="unit-input">
+
+                    <span>C</span>
+                    <input
+                        type="number"
+                        min="0"
+                        name="unit_c"
+                        required
+                        class="unit-input">
+
+                    <span>D</span>
+                    <input
+                        type="number"
+                        min="0"
+                        name="unit_d"
+                        required
+                        class="unit-input">
+
+                </div>
+            </div>
+
+            <button type="submit" class="menu-btn">
+                BẮT ĐẦU THI
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right-box">
+
+        <a href="/practice" class="menu-btn practice-link">
+            LUYỆN TẬP
+        </a>
+
+        <br>
+
+        <a href="/leaderboard" class="menu-btn practice-link">
+            KẾT QUẢ
+        </a>
+
+    </div>
+
+</div>
+
+<div class="footer-info">
+
+    <div>
+        Số câu hỏi: {{ questions|length }}
+    </div>
+
+    <div>
+        Thời gian: 30 phút
+    </div>
+
+</div>
+
+</body>
+</html>
