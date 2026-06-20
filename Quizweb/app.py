@@ -101,7 +101,7 @@ def start_exam():
             list(all_questions),
             QUESTION_LIMIT
         )
-    )
+    
 
     processed_questions = []
     answer_key = {}
