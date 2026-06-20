@@ -92,9 +92,15 @@ def start_exam():
     ).fetchall()
     conn.close()
 
-    selected_questions = random.sample(
-        list(all_questions),
-        len(all_questions)
+    QUESTION_LIMIT = 30
+
+    if len(all_questions) <= QUESTION_LIMIT:
+        selected_questions = list(all_questions)
+    else:
+        selected_questions = random.sample(
+            list(all_questions),
+            QUESTION_LIMIT
+        )
     )
 
     processed_questions = []
