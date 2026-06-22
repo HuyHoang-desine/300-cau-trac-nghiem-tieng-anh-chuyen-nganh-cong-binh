@@ -90,6 +90,12 @@ body{
                 onclick="openImportModal()">
             📥 Import Excel
         </button>
+        
+        <a href="/clear_questions"
+           class="btn btn-danger"
+           onclick="return confirm('XÓA TOÀN BỘ CÂU HỎI?')">
+                🗑 Xóa tất cả câu hỏi
+        </a>
     </div>
 
     <div class="card shadow mb-4">
@@ -158,6 +164,7 @@ body{
                 {% for r in results %}
                 <tr>
                     <td>{{ r.name }}</td>
+                    <td>{{ r.unit }}</td>
                     <td>{{ r.score }}</td>
                     <td>{{ r.total }}</td>
                     <td>{{ r.submit_time }}</td>
