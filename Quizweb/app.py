@@ -261,6 +261,17 @@ def admin():
         questions=questions
     )
 
+@app.route("/clear_questions")
+def clear_questions():
+    if not session.get("admin"):
+        return redirect("/login")
+
+    conn = get_db()
+    conn.execute("DELETE FROM questions")
+    conn.commit()
+    conn.close()
+
+    return redirect("/admin")
 
 @app.route("/add_question", methods=["GET", "POST"])
 def add_question():
