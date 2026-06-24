@@ -42,7 +42,7 @@
                 {% if q.options %}
                     {% for option in q.options %}
                         <div class="practice-answer"
-                             onclick="checkAnswer(this, '{{ option[0] }}', '{{ q.correct }}')">
+                             onclick="checkAnswer(this, '{{ option[0] }}', '{{ q.correct | default("") }}')">
                             {{ option[0] }}. {{ option[1] }}
                         </div>
                     {% endfor %}
