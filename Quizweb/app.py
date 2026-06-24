@@ -187,6 +187,33 @@ def start_exam():
 # ==========================
 # ADMIN (GIỮ NGUYÊN)
 # ==========================
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+
+        if username == "admin" and password == "123456":
+            session["admin"] = True
+            return redirect("/admin")
+
+        return render_template(
+            "login.html",
+            error="Sai tên đăng nhập hoặc mật khẩu!"
+        )
+
+    return render_template(
+        "login.html",
+        error=None
+    )
+
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/")
+
 @app.route("/admin")
 def admin():
     if not session.get("admin"):
