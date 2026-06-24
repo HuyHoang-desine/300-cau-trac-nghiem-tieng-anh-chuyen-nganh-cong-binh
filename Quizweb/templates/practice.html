@@ -29,7 +29,7 @@
     <div class="question-area" style="overflow-y:auto;">
 
         {% for q in questions %}
-        <div class="question-block active" style="display:block; margin-bottom:40px;">
+        <div class="question-block" style="display:block; margin-bottom:40px;">
 
             <div class="question-title">
                 Câu {{ loop.index }}
@@ -39,25 +39,18 @@
 
             <div class="practice-options">
 
-                <div class="practice-answer"
-                     onclick="checkAnswer(this, 'A', '{{ q.correct }}')">
-                    A. {{ q.option_a }}
-                </div>
-
-                <div class="practice-answer"
-                     onclick="checkAnswer(this, 'B', '{{ q.correct }}')">
-                    B. {{ q.option_b }}
-                </div>
-
-                <div class="practice-answer"
-                     onclick="checkAnswer(this, 'C', '{{ q.correct }}')">
-                    C. {{ q.option_c }}
-                </div>
-
-                <div class="practice-answer"
-                     onclick="checkAnswer(this, 'D', '{{ q.correct }}')">
-                    D. {{ q.option_d }}
-                </div>
+                {% if q.options %}
+                    {% for option in q.options %}
+                        <div class="practice-answer"
+                             onclick="checkAnswer(this, '{{ option[0] }}', '{{ q.correct }}')">
+                            {{ option[0] }}. {{ option[1] }}
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div style="color:red;">
+                        ❌ Không có dữ liệu options cho câu này
+                    </div>
+                {% endif %}
 
             </div>
 
@@ -70,6 +63,7 @@
 <script>
 function checkAnswer(element, selected, correct){
 
+    let options = element.parentElement.children;
     let correctAnswers = correct.split(",");
 
     if(correctAnswers.includes(selected)){
@@ -78,7 +72,6 @@ function checkAnswer(element, selected, correct){
         element.classList.add("wrong");
     }
 
-    let options = element.parentElement.children;
     let selectedCorrect = 0;
 
     for(let option of options){
