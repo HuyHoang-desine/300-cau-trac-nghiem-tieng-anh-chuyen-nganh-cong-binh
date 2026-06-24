@@ -8,7 +8,7 @@ import re
 app = Flask(__name__)
 app.secret_key = "quizweb_2026_secret_key"
 
-DATABASE = os.path.join(os.getcwd(), "quiz.db")
+DATABASE = "quiz.db"
 
 
 def get_db():
