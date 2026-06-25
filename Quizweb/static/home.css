@@ -1,8 +1,8 @@
-```css
-/* =======================================================
-   HOME PAGE V3
+/* ==========================================================
+   HOME.CSS V4
    Designer: ChatGPT
-   ======================================================= */
+   Resolution: 1920x1080
+   ========================================================== */
 
 *{
     margin:0;
@@ -10,33 +10,43 @@
     box-sizing:border-box;
 }
 
-body.new-home{
+html,
+body{
     width:100%;
-    height:100vh;
-    overflow:hidden;
-
-    font-family:"Segoe UI",sans-serif;
-
-    background:url("/static/bg.jpg") center center;
-    background-size:cover;
-    background-repeat:no-repeat;
-
-    position:relative;
+    height:100%;
 }
 
-/* =========================
-   OVERLAY
-   ========================= */
+body.new-home{
+
+    position:relative;
+
+    width:100%;
+    height:100vh;
+
+    overflow:hidden;
+
+    font-family:"Segoe UI",Arial,sans-serif;
+
+    background:url("/static/bg.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+/* ===========================
+   BACKGROUND
+=========================== */
 
 .bg-overlay{
 
     position:absolute;
+
     inset:0;
 
     background:
     linear-gradient(
-        rgba(15,40,60,.18),
-        rgba(15,40,60,.25)
+        rgba(20,45,70,.18),
+        rgba(20,45,70,.28)
     );
 
     backdrop-filter:blur(2px);
@@ -44,16 +54,16 @@ body.new-home{
     z-index:1;
 }
 
-/* =========================
+/* ===========================
    HEADER
-   ========================= */
+=========================== */
 
 .home-header{
 
     position:absolute;
 
+    top:22px;
     left:0;
-    top:20px;
 
     width:100%;
 
@@ -68,35 +78,32 @@ body.new-home{
     z-index:20;
 }
 
-/* =========================
+/* ===========================
    LOGO
-   ========================= */
+=========================== */
 
 .logo-left,
 .logo-right{
 
-    width:155px;
+    width:145px;
 
     user-select:none;
+
+    pointer-events:none;
+
+    filter:
+        drop-shadow(
+            0 5px 10px rgba(0,0,0,.25)
+        );
 }
 
-.logo-left{
-
-    margin-top:12px;
-}
-
-.logo-right{
-
-    margin-top:12px;
-}
-
-/* =========================
+/* ===========================
    TITLE
-   ========================= */
+=========================== */
 
 .title-board{
 
-    width:720px;
+    width:760px;
 
     display:flex;
 
@@ -112,22 +119,20 @@ body.new-home{
     display:block;
 
     filter:
-
         drop-shadow(
-            0 10px 18px
-            rgba(0,0,0,.22)
+            0 8px 18px rgba(0,0,0,.28)
         );
 }
 
-/* =========================
+/* ===========================
    MAIN
-   ========================= */
+=========================== */
 
 .home-main{
 
     position:absolute;
 
-    top:190px;
+    top:185px;
 
     left:50%;
 
@@ -135,138 +140,144 @@ body.new-home{
 
     width:1780px;
 
+    display:grid;
+
+    grid-template-columns:
+
+        320px
+
+        1fr
+
+        380px;
+
+    column-gap:70px;
+
+    align-items:start;
+
     z-index:20;
 }
-.home-layout{
 
-    width:100%;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:70px;
-}
-
-.home-layout{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:flex-start;
-
-    gap:45px;
-}
-```
-```css
-/* =======================================================
+/* ==========================================================
    LEFT PANEL
-   ======================================================= */
+   ========================================================== */
 
 .left-panel{
-
-    width:320px;
 
     display:flex;
 
     flex-direction:column;
 
-    justify-content:flex-start;
-
-    gap:20px;
+    gap:22px;
 }
 
+/* ---------- UNIT BOX ---------- */
+
 .unit-banner{
+
     position:relative;
+
     width:100%;
 }
 
 .unit-banner img{
+
     width:100%;
+
     display:block;
 }
 
+/* Ô nhập nằm đè lên ảnh */
+
 .unit-inputs{
+
     position:absolute;
 
-    top:55%;
+    top:50%;
+
     right:18px;
 
     transform:translateY(-50%);
 
     display:flex;
+
     align-items:center;
+
     gap:8px;
 }
 
 .unit-inputs input{
 
     width:42px;
-    height:48px;
+
+    height:40px;
 
     border:none;
+
     border-radius:10px;
+
+    background:white;
 
     text-align:center;
 
     font-size:20px;
-    font-weight:700;
+
+    font-weight:bold;
 
     outline:none;
 
-    background:rgba(255,255,255,.95);
-
     box-shadow:
-        0 3px 8px rgba(0,0,0,.18);
+
+        0 4px 10px rgba(0,0,0,.18);
 }
 
 .unit-inputs span{
 
     color:white;
 
-    font-size:24px;
+    font-size:26px;
 
     font-weight:bold;
 
-    text-shadow:0 2px 4px rgba(0,0,0,.3);
+    text-shadow:
+
+        0 2px 5px rgba(0,0,0,.35);
 }
 
-/* ================= PHOTO ================= */
+/* ---------- LEFT PHOTO ---------- */
 
 .left-photo{
 
     width:100%;
 
-    height:200px;
-
-    overflow:hidden;
-
-    border-radius:20px;
+    height:210px;
 
     background:white;
 
     padding:8px;
 
+    border-radius:18px;
+
+    overflow:hidden;
+
     box-shadow:
-        0 12px 28px rgba(0,0,0,.22);
+
+        0 12px 30px rgba(0,0,0,.22);
 }
 
 .left-photo img{
 
     width:100%;
+
     height:100%;
 
     object-fit:cover;
 
-    border-radius:14px;
+    border-radius:12px;
 }
 
-/* =======================================================
+/* ==========================================================
    CENTER PANEL
-   ======================================================= */
+   ========================================================== */
 
 .center-panel{
 
@@ -278,9 +289,9 @@ body.new-home{
 
     align-items:center;
 
-    gap:28px;
+    padding-top:170px;
 
-    margin-top:220px;
+    gap:30px;
 }
 
 .main-btn{
@@ -291,23 +302,21 @@ body.new-home{
 
     border:none;
 
-    border-radius:45px;
+    border-radius:50px;
 
     background:
+
         linear-gradient(
-            #2a95d4,
-            #1679b3
+
+            #3198d6,
+
+            #167db7
+
         );
 
     color:white;
 
     text-decoration:none;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
 
     font-size:30px;
 
@@ -315,62 +324,77 @@ body.new-home{
 
     letter-spacing:1px;
 
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
     cursor:pointer;
 
     transition:.25s;
 
     box-shadow:
-        0 10px 24px rgba(0,0,0,.25);
+
+        0 12px 25px rgba(0,0,0,.25);
 }
 
 .main-btn:hover{
 
     transform:
-        translateY(-4px)
+
+        translateY(-5px)
+
         scale(1.02);
 
     box-shadow:
-        0 18px 36px rgba(0,0,0,.30);
+
+        0 18px 35px rgba(0,0,0,.32);
 }
-```
-```css
-/* =======================================================
+
+/* ==========================================================
    RIGHT PANEL
-   ======================================================= */
+   ========================================================== */
 
 .right-panel{
-
-    width:400px;
 
     display:flex;
 
     flex-direction:column;
 
-    gap:20px;
+    gap:22px;
 }
 
+/* ---------- NAME BOX ---------- */
+
 .name-box{
+
     position:relative;
+
     width:100%;
 }
 
 .name-box img{
+
     width:100%;
+
     display:block;
 }
 
-.name-content{
-    position:absolute;
-    left:35px;
-    right:35px;
-    bottom:20px;
-}
-
 .name-input{
-    width:100%;
-    height:46px;
+
+    position:absolute;
+
+    left:34px;
+
+    right:34px;
+
+    bottom:18px;
+
+    height:48px;
 
     border:none;
+
     outline:none;
 
     border-radius:14px;
@@ -378,120 +402,190 @@ body.new-home{
     padding:0 18px;
 
     font-size:20px;
+
     font-weight:600;
 
     background:rgba(255,255,255,.95);
 
     box-shadow:
-        0 3px 10px rgba(0,0,0,.18);
+
+        0 4px 10px rgba(0,0,0,.18);
 }
 
 .name-input::placeholder{
+
     color:#8a8a8a;
 }
+
+/* ---------- RIGHT PHOTO ---------- */
 
 .right-photo{
 
     width:100%;
-    height:210px;
 
-    overflow:hidden;
-
-    border-radius:20px;
+    height:220px;
 
     background:white;
 
     padding:8px;
 
+    border-radius:18px;
+
+    overflow:hidden;
+
     box-shadow:
-        0 12px 28px rgba(0,0,0,.22);
+
+        0 12px 30px rgba(0,0,0,.22);
 }
 
 .right-photo img{
 
     width:100%;
+
     height:100%;
 
     object-fit:cover;
 
-    border-radius:14px;
+    border-radius:12px;
 }
 
-/* =======================================================
+/* ==========================================================
    FOOTER
-   ======================================================= */
+   ========================================================== */
 
 .question-count{
 
     position:fixed;
 
     left:35px;
+
     bottom:22px;
+
+    z-index:30;
 
     color:white;
 
-    font-size:24px;
+    font-size:26px;
+
     font-weight:700;
 
     text-shadow:
-        0 2px 5px rgba(0,0,0,.45);
 
-    z-index:30;
+        0 2px 6px rgba(0,0,0,.45);
 }
 
-/* =======================================================
+/* ==========================================================
    RESPONSIVE
-   ======================================================= */
+   ========================================================== */
 
 @media (max-width:1600px){
 
+    .home-main{
+
+        width:1500px;
+
+        grid-template-columns:
+
+            280px
+
+            1fr
+
+            330px;
+    }
+
     .title-board{
-        width:700px;
+
+        width:660px;
     }
 
     .logo-left,
     .logo-right{
-        width:130px;
+
+        width:120px;
     }
 
     .main-btn{
+
         width:320px;
+
         height:74px;
+
         font-size:26px;
     }
-
-    .left-panel{
-        width:290px;
-    }
-
-    .right-panel{
-        width:360px;
-    }
-
 }
 
 @media (max-width:1366px){
 
     .home-main{
-        top:190px;
+
+        width:1260px;
+
+        top:165px;
+
+        grid-template-columns:
+
+            250px
+
+            1fr
+
+            300px;
     }
 
     .title-board{
-        width:620px;
+
+        width:560px;
     }
 
     .logo-left,
     .logo-right{
-        width:110px;
+
+        width:105px;
     }
 
     .left-photo{
+
         height:180px;
     }
 
     .right-photo{
-        height:200px;
+
+        height:190px;
     }
 
+    .main-btn{
+
+        width:290px;
+
+        height:68px;
+
+        font-size:24px;
+    }
+
+    .question-count{
+
+        font-size:22px;
+    }
 }
-```
+
+/* ==========================================================
+   EFFECT
+   ========================================================== */
+
+.main-btn,
+.left-photo,
+.right-photo,
+.name-box img,
+.unit-banner img{
+
+    transition:.25s;
+}
+
+.left-photo:hover,
+.right-photo:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+
+        0 18px 35px rgba(0,0,0,.30);
+}
