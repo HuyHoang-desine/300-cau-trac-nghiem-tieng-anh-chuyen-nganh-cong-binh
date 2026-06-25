@@ -127,17 +127,16 @@ body.new-home{
 
     position:absolute;
 
-    top:235px;
+    top:190px;
 
-    left:0;
+    left:50%;
 
-    width:100%;
+    transform:translateX(-50%);
 
-    padding:0 55px;
+    width:1780px;
 
     z-index:20;
 }
-
 .home-layout{
 
     width:100%;
@@ -178,8 +177,6 @@ body.new-home{
     justify-content:flex-start;
 
     gap:20px;
-
-    margin-top:35px;
 }
 
 .unit-banner{
@@ -273,8 +270,6 @@ body.new-home{
 
 .center-panel{
 
-    flex:1;
-
     display:flex;
 
     flex-direction:column;
@@ -285,7 +280,7 @@ body.new-home{
 
     gap:28px;
 
-    transform:translateY(-40px);
+    margin-top:220px;
 }
 
 .main-btn{
@@ -352,8 +347,6 @@ body.new-home{
     flex-direction:column;
 
     gap:20px;
-
-    margin-top:35px;
 }
 
 .name-box{
