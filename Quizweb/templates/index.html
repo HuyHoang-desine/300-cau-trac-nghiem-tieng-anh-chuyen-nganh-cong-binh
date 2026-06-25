@@ -1,113 +1,81 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Luyện tập Tiếng Anh</title>
-
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+<meta charset="UTF-8">
+<title>Luyện tập Tiếng Anh</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
 </head>
-
 <body class="new-home">
 
 <div class="bg-overlay"></div>
 
-<!-- ================= HEADER ================= -->
-
 <header class="home-header">
-
-    <img src="/static/logo.png" class="logo-left">
-
+    <img src="/static/logo.png" class="logo-left" alt="">
     <div class="title-board">
         <img src="/static/title_board.png" alt="">
     </div>
-
-    <img src="/static/logo.png" class="logo-right">
-
+    <img src="/static/logo.png" class="logo-right" alt="">
 </header>
-
-<!-- ================= MAIN ================= -->
 
 <form action="/start_exam" method="POST" class="home-main">
 
-    <!-- LEFT -->
+<section class="left-panel">
 
-    <section class="left-panel">
+<div class="unit-banner">
+<img src="/static/unit_box.png" alt="">
 
-        <div class="unit-banner">
+<div class="unit-inputs">
+<input type="number" name="unit_b" min="0" max="10" required>
+<span>/</span>
+<input type="number" name="unit_c" min="0" max="10" required>
+<span>/</span>
+<input type="number" name="unit_d" min="0" max="10" required>
+</div>
 
-            <img src="/static/unit_box.png" alt="">
+</div>
 
-            <div class="unit-inputs">
+<div class="left-photo">
+<img src="/static/left.jpg" alt="">
+</div>
 
-                <input type="number" name="unit_b" min="0" max="10" required>
+</section>
 
-                <span>/</span>
+<section class="center-panel">
 
-                <input type="number" name="unit_c" min="0" max="10" required>
+<button type="submit" class="main-btn">BẮT ĐẦU</button>
 
-                <span>/</span>
+<a href="/practice" class="main-btn">LUYỆN TẬP</a>
 
-                <input type="number" name="unit_d" min="0" max="10" required>
+<a href="/leaderboard" class="main-btn">ĐIỂM SỐ</a>
 
-            </div>
+</section>
 
-        </div>
+<section class="right-panel">
 
-        <div class="left-photo">
-            <img src="/static/left.jpg" alt="">
-        </div>
+<div class="name-box">
 
-    </section>
+<img src="/static/name_box.png" alt="">
 
-    <!-- CENTER -->
+<input
+type="text"
+name="name"
+class="name-input"
+placeholder="Nhập họ và tên..."
+required>
 
-    <section class="center-panel">
+</div>
 
-        <button type="submit" class="main-btn">
-            BẮT ĐẦU
-        </button>
+<div class="right-photo">
+<img src="/static/right.jpg" alt="">
+</div>
 
-        <a href="/practice" class="main-btn">
-            LUYỆN TẬP
-        </a>
-
-        <a href="/leaderboard" class="main-btn">
-            ĐIỂM SỐ
-        </a>
-
-    </section>
-
-    <!-- RIGHT -->
-
-    <section class="right-panel">
-
-        <div class="name-box">
-
-            <img src="/static/name_box.png" alt="">
-
-            <input
-                type="text"
-                name="name"
-                class="name-input"
-                placeholder="Nhập họ và tên..."
-                required>
-
-        </div>
-
-        <div class="right-photo">
-            <img src="/static/right.jpg" alt="">
-        </div>
-
-    </section>
+</section>
 
 </form>
 
 <footer class="question-count">
-
-    Số câu hỏi: {{ questions|length }}
-
+Số câu hỏi: {{ questions|length }}
 </footer>
 
 </body>
