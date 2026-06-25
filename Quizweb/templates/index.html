@@ -6,37 +6,34 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
 </head>
-<body class="home-page">
+<body class="new-home">
 
-<div class="overlay"></div>
+<div class="bg-overlay"></div>
 
-<!-- Logo -->
-<img src="/static/logo.png" class="logo logo-left">
-<img src="/static/logo.png" class="logo logo-right">
+<img src="/static/logo.png" class="logo-left">
+<img src="/static/logo.png" class="logo-right">
 
-<!-- TITLE -->
 <div class="title-board">
-    <img src="/static/title_board.png" alt="">
+    <img src="/static/title_board.png">
     <div class="title-text">
         LUYỆN TẬP TIẾNG ANH<br>
         CHUYÊN NGÀNH
     </div>
 </div>
 
-<!-- MAIN -->
-<div class="main-layout">
+<form action="/start_exam" method="POST">
 
-    <!-- LEFT -->
-    <div class="left-panel">
+    <div class="home-layout">
 
-        <div class="unit-box">
-            <img src="/static/unit_box.png">
-            <span>Đơn vị :</span>
-        </div>
+        <!-- LEFT -->
+        <div class="left-panel">
 
-        <form action="/start_exam" method="POST">
+            <div class="unit-banner">
+                <img src="/static/unit_box.png">
+                <div class="unit-label">Đơn vị:</div>
+            </div>
 
-            <div class="unit-inputs">
+            <div class="unit-row">
                 <input type="number" name="unit_b" min="0" max="10" required>
                 <span>/</span>
                 <input type="number" name="unit_c" min="0" max="10" required>
@@ -44,41 +41,48 @@
                 <input type="number" name="unit_d" min="0" max="10" required>
             </div>
 
-            <div class="photo-frame left-photo">
+            <div class="left-photo">
                 <img src="/static/left.jpg">
             </div>
-    </div>
 
-    <!-- CENTER -->
-    <div class="center-panel">
+        </div>
 
-        <button class="main-btn" type="submit">Bắt đầu</button>
+        <!-- CENTER -->
+        <div class="center-panel">
 
-        <a href="/practice" class="main-btn">Luyện tập</a>
+            <button type="submit" class="main-btn">
+                Bắt đầu
+            </button>
 
-        <a href="/leaderboard" class="main-btn">Điểm số</a>
+            <a href="/practice" class="main-btn">
+                Luyện tập
+            </a>
 
-    </div>
+            <a href="/leaderboard" class="main-btn">
+                Điểm số
+            </a>
 
-    <!-- RIGHT -->
-    <div class="right-panel">
+        </div>
 
-        <div class="name-box">
-            <img src="/static/name_box.png">
+        <!-- RIGHT -->
+        <div class="right-panel">
 
-            <div class="name-content">
-                <label>Họ và tên :</label>
-                <input type="text" name="name" required>
+            <div class="name-box">
+                <img src="/static/name_box.png">
+
+                <div class="name-content">
+                    <label>Họ và tên:</label>
+                    <input type="text" name="name" required>
+                </div>
             </div>
-        </div>
 
-        <div class="photo-frame right-photo">
-            <img src="/static/right.jpg">
+            <div class="right-photo">
+                <img src="/static/right.jpg">
+            </div>
+
         </div>
 
     </div>
-
-</div>
 
 </form>
 
