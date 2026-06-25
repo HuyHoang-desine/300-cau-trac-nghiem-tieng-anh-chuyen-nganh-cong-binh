@@ -596,26 +596,22 @@ th{
 
 .title-board{
     position:absolute;
-    top:40px;
+    top:30px;
     left:50%;
     transform:translateX(-50%);
+    width:720px;
+    height:260px;
 
-    width:620px;
-    height:180px;
-
-    background:#2c90b9;
-    border-radius:25px;
+    background:url("/static/title_board.png");
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    background-position:center;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    text-align:center;
-    font-size:42px;
-    font-weight:bold;
-    color:white;
-
-    box-shadow:0 6px 20px rgba(0,0,0,0.3);
+    z-index:5;
 }
 
 .unit-panel{
@@ -753,17 +749,21 @@ th{
 
 .title-board{
     position:absolute;
-    top:40px;
+    top:30px;
     left:50%;
     transform:translateX(-50%);
-    width:670px;
-    height:250px;
-    border-radius:28px;
-    background:linear-gradient(180deg,#3ba4d4,#2c87b4);
-    box-shadow:0 12px 30px rgba(0,0,0,0.3);
+    width:720px;
+    height:260px;
+
+    background:url("/static/title_board.png");
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    background-position:center;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     z-index:5;
 }
 
@@ -775,19 +775,7 @@ th{
     font-weight:bold;
 }
 
-.ring{
-    position:absolute;
-    width:22px;
-    height:22px;
-    border-radius:50%;
-    border:6px solid #777;
-    background:#ddd;
-}
 
-.ring1{top:20px;left:90px;}
-.ring2{top:20px;right:90px;}
-.ring3{bottom:20px;left:90px;}
-.ring4{bottom:20px;right:90px;}
 
 .unit-banner{
     position:absolute;
