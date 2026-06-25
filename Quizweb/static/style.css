@@ -601,66 +601,79 @@ th{
 
 .title-board{
     position:absolute;
-    top:25px;
+    top:18px;
     left:50%;
     transform:translateX(-50%);
-    width:720px;
-    height:255px;
-    border-radius:28px;
-    background:linear-gradient(180deg,#43a6d3,#3188b3);
-    box-shadow:0 10px 25px rgba(0,0,0,0.35);
+
+    width:760px;
+    height:285px;
+
+    background:url("/static/title_board.png") center no-repeat;
+    background-size:100% 100%;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    z-index:4;
+
+    z-index:8;
 }
 
+
 .title-board h1{
+    font-size:50px;
+    line-height:1.2;
     color:white;
     text-align:center;
-    font-size:58px;
-    line-height:1.15;
-    font-weight:800;
+    margin-top:10px;
 }
 
 /* UNIT */
 
 .unit-banner{
     position:absolute;
-    left:70px;
-    top:320px;
-    width:300px;
-    height:85px;
-    background:#dffcff;
-    border-radius:10px;
+    left:58px;
+    top:335px;
+
+    width:330px;
+    height:95px;
+
+    background:url("/static/unit_box.png") no-repeat center;
+    background-size:100% 100%;
+
     display:flex;
     align-items:center;
-    padding-left:30px;
-    font-size:44px;
-    font-weight:bold;
-    z-index:4;
+
+    padding-left:38px;
+
+    font-size:42px;
+    font-weight:700;
+    color:black;
+
+    z-index:8;
 }
 
 .unit-row{
     position:absolute;
     left:70px;
-    top:440px;
+    top:445px;
+
     display:flex;
     align-items:center;
-    gap:18px;
-    z-index:4;
+    gap:16px;
+    z-index:8;
 }
 
 .unit-row input{
-    width:88px;
-    height:75px;
+    width:78px;
+    height:68px;
+
     border:none;
     border-radius:14px;
+
+    text-align:center;
     font-size:34px;
     font-weight:bold;
-    text-align:center;
 }
-
 .unit-row span{
     color:white;
     font-size:50px;
@@ -672,28 +685,33 @@ th{
 .name-box{
     position:absolute;
     right:70px;
-    top:440px;
-    width:430px;
+    top:430px;
+
+    width:480px;
     height:150px;
-    background:#eefcff;
-    border-radius:18px;
-    border:3px solid #6f8994;
-    padding:20px;
-    z-index:4;
+
+    background:url("/static/name_box.png") center no-repeat;
+    background-size:100% 100%;
+
+    z-index:10;
 }
 
 .name-box label{
-    display:block;
-    font-size:32px;
-    font-weight:bold;
-    margin-bottom:16px;
+    display:none;
 }
 
 .name-box input{
-    width:100%;
-    height:56px;
-    border-radius:28px;
-    border:3px solid #7b97a3;
+    position:absolute;
+    left:22px;
+    top:76px;
+
+    width:435px;
+    height:50px;
+
+    border:none;
+    outline:none;
+    background:transparent;
+
     padding:0 20px;
     font-size:24px;
 }
@@ -744,8 +762,8 @@ th{
     position:absolute;
     left:45px;
     bottom:80px;
-    width:340px;
-    height:240px;
+    width:290px;
+    height:210px;
     background:white;
     border-radius:16px;
     padding:8px;
@@ -754,14 +772,17 @@ th{
 
 .photo-right{
     position:absolute;
-    right:70px;
-    bottom:100px;
-    width:390px;
-    height:210px;
+    right:60px;
+    bottom:85px;
+
+    width:350px;
+    height:190px;
+
     background:white;
     border-radius:16px;
     padding:8px;
-    z-index:4;
+
+    z-index:7;
 }
 
 .photo-left img,
