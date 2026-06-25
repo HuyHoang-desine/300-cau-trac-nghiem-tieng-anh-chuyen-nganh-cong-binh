@@ -2,53 +2,70 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Trắc nghiệm Tiếng Anh</title>
+<title>Luyện tập Tiếng Anh</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+<body class="new-home">
 
-<body class="home-page">
+<div class="bg-overlay"></div>
 
-<div class="home-overlay">
+<img src="/static/logo.png" class="logo-left">
+<img src="/static/logo.png" class="logo-right">
 
-    <img src="/static/logo.png" class="logo-left">
-    <img src="/static/logo.png" class="logo-right">
+<div class="title-board">
+    <div class="ring ring1"></div>
+    <div class="ring ring2"></div>
+    <div class="ring ring3"></div>
+    <div class="ring ring4"></div>
 
-    <div class="title-board">
+    <h1>
         LUYỆN TẬP TIẾNG ANH<br>
         CHUYÊN NGÀNH
+    </h1>
+</div>
+
+<div class="unit-banner">
+    Đơn vị:
+</div>
+
+<form action="/start_exam" method="POST">
+
+    <div class="unit-input-row">
+        <input type="number" name="unit_b" min="0" max="10" required>
+        <span>/</span>
+        <input type="number" name="unit_c" min="0" max="10" required>
+        <span>/</span>
+        <input type="number" name="unit_d" min="0" max="10" required>
     </div>
 
-    <form action="/start_exam" method="POST">
-
-        <div class="unit-panel">
-            <div class="unit-label">Đơn vị</div>
-
-            <div class="unit-row">
-                <input type="number" min="0" max="10" name="unit_b" required>
-                <span>/</span>
-                <input type="number" min="0" max="10" name="unit_c" required>
-                <span>/</span>
-                <input type="number" min="0" max="10" name="unit_d" required>
-            </div>
-        </div>
-
-        <div class="name-panel">
-            <label>Họ và tên :</label>
-            <input type="text" name="name" required>
-        </div>
-
-        <div class="menu-group">
-            <button type="submit" class="home-btn">Bắt đầu</button>
-            <a href="/practice" class="home-btn">Luyện tập</a>
-            <a href="/leaderboard" class="home-btn">Điểm số</a>
-        </div>
-
-    </form>
-
-    <div class="question-counter">
-        Số câu hỏi: {{ questions|length }}
+    <div class="name-box">
+        <label>Họ và tên :</label>
+        <input type="text" name="name" required>
     </div>
 
+    <button type="submit" class="main-btn btn-start">
+        Bắt đầu
+    </button>
+</form>
+
+<a href="/practice" class="main-btn btn-practice">
+    Luyện tập
+</a>
+
+<a href="/leaderboard" class="main-btn btn-score">
+    Điểm số
+</a>
+
+<div class="photo-left">
+    <img src="/static/left.jpg">
+</div>
+
+<div class="photo-right">
+    <img src="/static/right.jpg">
+</div>
+
+<div class="question-count">
+    Số câu hỏi: {{ questions|length }}
 </div>
 
 </body>
