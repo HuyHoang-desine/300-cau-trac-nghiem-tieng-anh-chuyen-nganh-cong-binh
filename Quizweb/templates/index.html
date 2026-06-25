@@ -1,48 +1,49 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<title>Luyện tập Tiếng Anh</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <title>Luyện tập Tiếng Anh</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body class="new-home">
+<body class="home-page-new">
 
-<div class="bg-overlay"></div>
+<div class="overlay"></div>
 
 <img src="/static/logo.png" class="logo-left">
 <img src="/static/logo.png" class="logo-right">
 
+<!-- TITLE -->
 <div class="title-board">
-    <div class="ring ring1"></div>
-    <div class="ring ring2"></div>
-    <div class="ring ring3"></div>
-    <div class="ring ring4"></div>
-
     <h1>
         LUYỆN TẬP TIẾNG ANH<br>
         CHUYÊN NGÀNH
     </h1>
 </div>
 
+<!-- UNIT -->
 <div class="unit-banner">
-    Đơn vị:
+    Đơn vị :
 </div>
 
 <form action="/start_exam" method="POST">
 
-    <div class="unit-input-row">
+    <div class="unit-row">
         <input type="number" name="unit_b" min="0" max="10" required>
         <span>/</span>
+
         <input type="number" name="unit_c" min="0" max="10" required>
         <span>/</span>
+
         <input type="number" name="unit_d" min="0" max="10" required>
     </div>
 
+    <!-- NAME -->
     <div class="name-box">
         <label>Họ và tên :</label>
         <input type="text" name="name" required>
     </div>
 
+    <!-- BUTTONS -->
     <button type="submit" class="main-btn btn-start">
         Bắt đầu
     </button>
@@ -56,6 +57,7 @@
     Điểm số
 </a>
 
+<!-- PHOTOS -->
 <div class="photo-left">
     <img src="/static/left.jpg">
 </div>
