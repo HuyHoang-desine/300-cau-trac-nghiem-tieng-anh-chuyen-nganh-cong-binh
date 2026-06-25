@@ -5,66 +5,81 @@
     <title>Luyện tập Tiếng Anh</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body class="home-page-new">
+<body class="home-page">
 
 <div class="overlay"></div>
 
-<img src="/static/logo.png" class="logo-left">
-<img src="/static/logo.png" class="logo-right">
+<!-- Logo -->
+<img src="/static/logo.png" class="logo logo-left">
+<img src="/static/logo.png" class="logo logo-right">
 
 <!-- TITLE -->
 <div class="title-board">
-    <h1>
+    <img src="/static/title_board.png" alt="">
+    <div class="title-text">
         LUYỆN TẬP TIẾNG ANH<br>
         CHUYÊN NGÀNH
-    </h1>
+    </div>
 </div>
 
-<!-- UNIT -->
-<div class="unit-banner">
-    Đơn vị :
+<!-- MAIN -->
+<div class="main-layout">
+
+    <!-- LEFT -->
+    <div class="left-panel">
+
+        <div class="unit-box">
+            <img src="/static/unit_box.png">
+            <span>Đơn vị :</span>
+        </div>
+
+        <form action="/start_exam" method="POST">
+
+            <div class="unit-inputs">
+                <input type="number" name="unit_b" min="0" max="10" required>
+                <span>/</span>
+                <input type="number" name="unit_c" min="0" max="10" required>
+                <span>/</span>
+                <input type="number" name="unit_d" min="0" max="10" required>
+            </div>
+
+            <div class="photo-frame left-photo">
+                <img src="/static/left.jpg">
+            </div>
+    </div>
+
+    <!-- CENTER -->
+    <div class="center-panel">
+
+        <button class="main-btn" type="submit">Bắt đầu</button>
+
+        <a href="/practice" class="main-btn">Luyện tập</a>
+
+        <a href="/leaderboard" class="main-btn">Điểm số</a>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right-panel">
+
+        <div class="name-box">
+            <img src="/static/name_box.png">
+
+            <div class="name-content">
+                <label>Họ và tên :</label>
+                <input type="text" name="name" required>
+            </div>
+        </div>
+
+        <div class="photo-frame right-photo">
+            <img src="/static/right.jpg">
+        </div>
+
+    </div>
+
 </div>
 
-<form action="/start_exam" method="POST">
-
-    <div class="unit-row">
-        <input type="number" name="unit_b" min="0" max="10" required>
-        <span>/</span>
-
-        <input type="number" name="unit_c" min="0" max="10" required>
-        <span>/</span>
-
-        <input type="number" name="unit_d" min="0" max="10" required>
-    </div>
-
-    <!-- NAME -->
-    <div class="name-box">
-        <label>Họ và tên :</label>
-        <input type="text" name="name" required>
-    </div>
-
-    <!-- BUTTONS -->
-    <button type="submit" class="main-btn btn-start">
-        Bắt đầu
-    </button>
 </form>
-
-<a href="/practice" class="main-btn btn-practice">
-    Luyện tập
-</a>
-
-<a href="/leaderboard" class="main-btn btn-score">
-    Điểm số
-</a>
-
-<!-- PHOTOS -->
-<div class="photo-left">
-    <img src="/static/left.jpg">
-</div>
-
-<div class="photo-right">
-    <img src="/static/right.jpg">
-</div>
 
 <div class="question-count">
     Số câu hỏi: {{ questions|length }}
