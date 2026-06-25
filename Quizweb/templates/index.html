@@ -1,98 +1,114 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <title>Luyện tập Tiếng Anh</title>
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
-
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
 </head>
+
 <body class="new-home">
 
 <div class="bg-overlay"></div>
 
-<img src="/static/logo.png" class="logo-left">
-<img src="/static/logo.png" class="logo-right">
+<!-- ================= HEADER ================= -->
 
-<div class="title-board">
-    <img src="/static/title_board.png">
-    <div class="title-text">
-        LUYỆN TẬP TIẾNG ANH<br>
-        CHUYÊN NGÀNH
+<header class="home-header">
+
+    <img src="/static/logo.png" class="logo-left">
+
+    <div class="title-board">
+        <img src="/static/title_board.png" alt="">
     </div>
-</div>
 
-<form action="/start_exam" method="POST">
+    <img src="/static/logo.png" class="logo-right">
 
-    <div class="home-layout">
+</header>
 
-        <!-- LEFT -->
-        <div class="left-panel">
+<!-- ================= MAIN ================= -->
 
-            <div class="unit-banner">
-                <img src="/static/unit_box.png">
-                <div class="unit-label">Đơn vị:</div>
-            </div>
+<form action="/start_exam" method="POST" class="home-main">
 
-            <div class="unit-row">
+    <!-- LEFT -->
+
+    <section class="left-panel">
+
+        <div class="unit-banner">
+
+            <img src="/static/unit_box.png" alt="">
+
+            <div class="unit-inputs">
+
                 <input type="number" name="unit_b" min="0" max="10" required>
+
                 <span>/</span>
+
                 <input type="number" name="unit_c" min="0" max="10" required>
+
                 <span>/</span>
+
                 <input type="number" name="unit_d" min="0" max="10" required>
-            </div>
 
-            <div class="left-photo">
-                <img src="/static/left.jpg">
             </div>
 
         </div>
 
-        <!-- CENTER -->
-        <div class="center-panel">
+        <div class="left-photo">
+            <img src="/static/left.jpg" alt="">
+        </div>
 
-            <button type="submit" class="main-btn">
-                Bắt đầu
-            </button>
+    </section>
 
-            <a href="/practice" class="main-btn">
-                Luyện tập
-            </a>
+    <!-- CENTER -->
 
-            <a href="/leaderboard" class="main-btn">
-                Điểm số
-            </a>
+    <section class="center-panel">
+
+        <button type="submit" class="main-btn">
+            BẮT ĐẦU
+        </button>
+
+        <a href="/practice" class="main-btn">
+            LUYỆN TẬP
+        </a>
+
+        <a href="/leaderboard" class="main-btn">
+            ĐIỂM SỐ
+        </a>
+
+    </section>
+
+    <!-- RIGHT -->
+
+    <section class="right-panel">
+
+        <div class="name-box">
+
+            <img src="/static/name_box.png" alt="">
+
+            <input
+                type="text"
+                name="name"
+                class="name-input"
+                placeholder="Nhập họ và tên..."
+                required>
 
         </div>
 
-        <!-- RIGHT -->
-        <div class="right-panel">
-
-            <div class="name-box">
-                <img src="/static/name_box.png">
-
-                <div class="name-content">
-                    <label>Họ và tên:</label>
-                    <input type="text" name="name" required>
-                </div>
-            </div>
-
-            <div class="right-photo">
-                <img src="/static/right.jpg">
-            </div>
-
+        <div class="right-photo">
+            <img src="/static/right.jpg" alt="">
         </div>
 
-    </div>
+    </section>
 
 </form>
 
-<div class="question-count">
+<footer class="question-count">
+
     Số câu hỏi: {{ questions|length }}
-</div>
+
+</footer>
 
 </body>
 </html>
