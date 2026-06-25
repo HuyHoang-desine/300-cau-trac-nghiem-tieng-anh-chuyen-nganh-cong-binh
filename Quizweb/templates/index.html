@@ -3,99 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <title>Trắc nghiệm Tiếng Anh</title>
-
-<link rel="stylesheet"
-href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
-<body>
+<body class="home-page">
 
-<div class="header">
+<div class="home-overlay">
 
-    <img src="/static/logo.png" class="logo">
+    <img src="/static/logo.png" class="logo-left">
+    <img src="/static/logo.png" class="logo-right">
 
-    <h1>ĐẠI ĐỘI 4 - TIỂU ĐOÀN 2</h1>
-    <h2>TRƯỜNG SĨ QUAN CÔNG BINH</h2>
-    <h3>TRẮC NGHIỆM: TIẾNG ANH CHUYÊN NGÀNH CÔNG BINH</h3>
+    <div class="title-board">
+        LUYỆN TẬP TIẾNG ANH<br>
+        CHUYÊN NGÀNH
+    </div>
 
-</div>
+    <form action="/start_exam" method="POST">
 
-<div class="home-container">
+        <div class="unit-panel">
+            <div class="unit-label">Đơn vị</div>
 
-    <!-- LEFT -->
-    <div class="left-box">
-
-        <form action="/start_exam" method="POST">
-
-            <input
-                class="input-box"
-                name="name"
-                placeholder="Họ và tên"
-                required>
-
-            <div class="unit-wrapper">
-                <div class="unit-box">
-
-                    <span>B</span>
-                    <input
-                        type="number"
-                        min="0"
-                        name="unit_b"
-                        required
-                        class="unit-input">
-
-                    <span>C</span>
-                    <input
-                        type="number"
-                        min="0"
-                        name="unit_c"
-                        required
-                        class="unit-input">
-
-                    <span>D</span>
-                    <input
-                        type="number"
-                        min="0"
-                        name="unit_d"
-                        required
-                        class="unit-input">
-
-                </div>
+            <div class="unit-row">
+                <input type="number" min="0" max="10" name="unit_b" required>
+                <span>/</span>
+                <input type="number" min="0" max="10" name="unit_c" required>
+                <span>/</span>
+                <input type="number" min="0" max="10" name="unit_d" required>
             </div>
+        </div>
 
-            <button type="submit" class="menu-btn">
-                BẮT ĐẦU THI
-            </button>
+        <div class="name-panel">
+            <label>Họ và tên :</label>
+            <input type="text" name="name" required>
+        </div>
 
-        </form>
+        <div class="menu-group">
+            <button type="submit" class="home-btn">Bắt đầu</button>
+            <a href="/practice" class="home-btn">Luyện tập</a>
+            <a href="/leaderboard" class="home-btn">Điểm số</a>
+        </div>
 
-    </div>
+    </form>
 
-    <!-- RIGHT -->
-    <div class="right-box">
-
-        <a href="/practice" class="menu-btn practice-link">
-            LUYỆN TẬP
-        </a>
-
-        <br>
-
-        <a href="/leaderboard" class="menu-btn practice-link">
-            KẾT QUẢ
-        </a>
-
-    </div>
-
-</div>
-
-<div class="footer-info">
-
-    <div>
+    <div class="question-counter">
         Số câu hỏi: {{ questions|length }}
-    </div>
-
-    <div>
-        Thời gian: 30 phút
     </div>
 
 </div>
