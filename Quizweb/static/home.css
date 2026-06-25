@@ -69,22 +69,26 @@ body.new-home{
 
 /* MAIN LAYOUT */
 .home-layout{
+    width:100%;
+    max-width:1920px;
+    margin:auto;
+
     position:absolute;
     top:290px;
-    left:0;
-    right:0;
+    left:50%;
+    transform:translateX(-50%);
 
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
 
-    padding:0 50px;
+    padding:0 60px;
     z-index:10;
 }
-
 /* LEFT PANEL */
 .left-panel{
     width:360px;
+    flex-shrink:0;
 }
 
 .unit-banner{
@@ -144,11 +148,15 @@ body.new-home{
 
 /* CENTER PANEL */
 .center-panel{
+    width:430px;
     margin-top:45px;
+
     display:flex;
     flex-direction:column;
     gap:35px;
     align-items:center;
+
+    flex-shrink:0;
 }
 
 .main-btn{
@@ -174,6 +182,7 @@ body.new-home{
 /* RIGHT PANEL */
 .right-panel{
     width:520px;
+    flex-shrink:0;
 }
 
 .name-box{
