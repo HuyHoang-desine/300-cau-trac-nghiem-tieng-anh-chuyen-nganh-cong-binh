@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Luyện tập Tiếng Anh</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <title>Luyện tập Tiếng Anh</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='home.css') }}">
 </head>
 <body class="new-home">
 
 <div class="bg-overlay"></div>
 
 <header class="home-header">
-    <img src="/static/logo.png" class="logo-left" alt="">
+    <img src="{{ url_for('static', filename='logo.png') }}" 
+         class="logo-left">
+
     <div class="title-board">
-        <img src="/static/title_board.png" alt="">
+
+        <img src="{{ url_for('static', filename='title_board.png') }}"  
+             alt="Title">
+
     </div>
-    <img src="/static/logo.png" class="logo-right" alt="">
+    <img src="{{ url_for('static', filename='logo.png') }}"
+         class="logo-right">
 </header>
 
 <form action="/start_exam" method="POST" class="home-main">
@@ -25,7 +35,7 @@
 <section class="left-panel">
 
 <div class="unit-banner">
-<img src="/static/unit_box.png" alt="">
+<img src="{{ url_for('static', filename='unit_box.png') }}">
 
 <div class="unit-inputs">
 <input type="number" name="unit_b" min="0" max="10" required>
@@ -38,7 +48,7 @@
 </div>
 
 <div class="left-photo">
-<img src="/static/left.jpg" alt="">
+<img src="{{ url_for('static', filename='left.jpg') }}">
 </div>
 
 </section>
@@ -57,20 +67,24 @@
 
 <div class="name-box">
 
-<img src="/static/name_box.png" alt="">
+    <img src="{{ url_for('static', filename='name_box.png') }}">
 
-<input
-type="text"
-name="name"
-class="name-input"
-placeholder="Nhập họ và tên..."
-autocomplete="off"
-required>
+    <div class="name-content">
+
+        <input
+            type="text"
+            name="name"
+            class="name-input"
+            placeholder="Nhập họ và tên..."
+            autocomplete="off"
+            required>
+
+    </div>
 
 </div>
 
 <div class="right-photo">
-<img src="/static/right.jpg" alt="">
+<img src="{{ url_for('static', filename='right.jpg') }}">
 </div>
 
 </section>
