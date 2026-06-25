@@ -21,7 +21,7 @@ body.new-home{
     background-repeat:no-repeat;
 }
 
-/* lớp phủ tối nhẹ */
+/* ================= OVERLAY ================= */
 
 .bg-overlay{
     position:absolute;
@@ -32,7 +32,7 @@ body.new-home{
     z-index:1;
 }
 
-/* mọi thành phần đều nổi lên trên overlay */
+/* ================= HEADER ================= */
 
 .logo-left,
 .logo-right,
@@ -40,55 +40,61 @@ body.new-home{
 .home-layout,
 .question-count{
     position:absolute;
-    z-index:10;
+    z-index:20;
 }
 
-/* =========================
-   LOGO
-   ========================= */
+/* ===== LOGO ===== */
+
+.logo-left,
+.logo-right{
+    top:45px;
+    width:165px;
+}
 
 .logo-left{
-    width:170px;
-
-    top:45px;
     left:45px;
 }
 
 .logo-right{
-    width:170px;
-
-    top:45px;
     right:45px;
 }
 
-/* =========================
-   TITLE
-   ========================= */
+/* ===== TITLE ===== */
 
 .title-board{
-    width:900px;
-
     left:50%;
-    top:20px;
+    top:18px;
+
+    width:880px;
 
     transform:translateX(-50%);
 }
 
 .title-board img{
     width:100%;
+    height:auto;
     display:block;
 }
+
+/* Ẩn chữ HTML vì đã nằm trong ảnh */
 
 .title-text{
     display:none;
 }
 
-/* ===== PHOTO ===== */
+/* ================= PHOTO ================= */
 
 .left-photo,
 .right-photo{
     overflow:hidden;
+
+    background:white;
+
     border-radius:18px;
+
+    padding:8px;
+
+    box-shadow:0 8px 24px rgba(0,0,0,.25);
 }
 
 .left-photo{
@@ -98,14 +104,31 @@ body.new-home{
 
 .right-photo{
     width:420px;
-    height:240px;
-    margin-top:30px;
+    height:235px;
+
+    margin-top:28px;
 }
 
 .left-photo img,
 .right-photo img{
     width:100%;
     height:100%;
+
     object-fit:cover;
+
     display:block;
+
+    border-radius:12px;
+}
+
+/* ================= FOOTER ================= */
+
+.question-count{
+    left:35px;
+    bottom:18px;
+
+    color:white;
+
+    font-size:28px;
+    font-weight:bold;
 }
